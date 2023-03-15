@@ -11,7 +11,7 @@ INTERVAL_RANGE = c(-MAX_INTERVAL_RANGE, MAX_INTERVAL_RANGE)
 INTERVAL_RANGE_SEQ = seq(from=min(INTERVAL_RANGE), to=max(INTERVAL_RANGE), by = 1)
 
 #output
-output_path = "features-analysis/plots/"
+output_path = "plots/"
 
 # load data
 midi_flow_before <- read_csv("feature-analysis/data/midi_flow_before.csv") %>% 
