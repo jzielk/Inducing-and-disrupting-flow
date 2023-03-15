@@ -1,0 +1,197 @@
+StartDate,EndDate,Status,Progress,Duration (in seconds),Finished,RecordedDate,ResponseId,ExternalReference,DistributionChannel,UserLanguage,Q15,Q13,Q1,Q2,Q3,Flow Short Scale_1,Flow Short Scale_2,Flow Short Scale_3,Flow Short Scale_4,Flow Short Scale_5,Flow Short Scale_6,Flow Short Scale_7,Flow Short Scale_8,Flow Short Scale_9,Flow Short Scale_10,time_estimate,Piece,Composer,Measure numbers,Timestamps,Flow_measures,Observations,Comments,Age,gender,gender_3_TEXT,educ,race,race_6_TEXT,ethnicity,eng,YearsPlayed,PerformanceFrequency,ReadMusic,time_estimate_min,time_estimate_sec,actual_time,time_flow,data_valid
+Start Date,End Date,Response Type,Progress,Duration (in seconds),Finished,Recorded Date,Response ID,External Data Reference,Distribution Channel,User Language,Click Yes to provide your consent or No to not provide your consent.,"I give consent for recordings created as a part of this study to be used in future presentations of the study’s results such as scientific conferences. (Answering ""No"" will not affect your eligibility to participate in this study).",Which of the following statements about Geological Evolutionary theory is supported by both passages?,Passage 1 is unlike Passage 2 in that Passage 1,Passage 2 is best described as,Please rate the degree each statement describes your musical experience. - I felt just the right amount of challenge,Please rate the degree each statement describes your musical experience. - My thoughts/activities ran fluidly and smoothly,Please rate the degree each statement describes your musical experience. - I did not notice time passing,Please rate the degree each statement describes your musical experience. - I had no difficulty concentrating,Please rate the degree each statement describes your musical experience. - My mind was completely clear,Please rate the degree each statement describes your musical experience. - I was totally absorbed in what I was doing,Please rate the degree each statement describes your musical experience. - The right thoughts/movements occurred of their own accord,Please rate the degree each statement describes your musical experience. - I knew what I had to do each step of the way,Please rate the degree each statement describes your musical experience. - I felt that I had everything under control,Please rate the degree each statement describes your musical experience. - I was completely lost in thought,"How long do you think you spent performing your instrument? Without consulting any references, please report your time estimate in minutes and seconds.",What was the name of the piece you played today?,What was the composer of the piece you played today?,Please list all the excerpt measure numbers you played today. (example: m.23-35),"Please list the time ranges (in minutes and seconds) when you became so absorbed in the music that you stopped being consciously aware of your performance.
+
+
+Example:
+
+1:34-2:26
+
+4:33-5:12
+
+6:52-6:58","Please list the measure numbers when you became so absorbed in the music that you stopped being consciously aware of your performance.
+
+
+Example:
+m. 12-14
+m. 36-44",Please list any comments or observations you have about those moments:,Do you have any additional comments about your performance?,"What is your age? 
+(Please note the text box accepts numbers only.)",What is your gender? - Selected Choice,What is your gender? - Other (specify) - Text,What year are you in your degree?,Which of the following best describes you? - Selected Choice,Which of the following best describes you? - Other (specify) - Text,Are you Hispanic/Latino?,Is English your native language?,"How long have you been playing this instrument (in years)? 
+(Please note the text box accepts numbers only.)",How regularly do you perform in public?,"Do you read music? If so, do you learn your music by heart?",,,,,
+"{""ImportId"":""startDate"",""timeZone"":""America/Denver""}","{""ImportId"":""endDate"",""timeZone"":""America/Denver""}","{""ImportId"":""status""}","{""ImportId"":""progress""}","{""ImportId"":""duration""}","{""ImportId"":""finished""}","{""ImportId"":""recordedDate"",""timeZone"":""America/Denver""}","{""ImportId"":""_recordId""}","{""ImportId"":""externalDataReference""}","{""ImportId"":""distributionChannel""}","{""ImportId"":""userLanguage""}","{""ImportId"":""QID15""}","{""ImportId"":""QID13""}","{""ImportId"":""QID1""}","{""ImportId"":""QID4""}","{""ImportId"":""QID5""}","{""ImportId"":""QID7_1""}","{""ImportId"":""QID7_2""}","{""ImportId"":""QID7_3""}","{""ImportId"":""QID7_4""}","{""ImportId"":""QID7_5""}","{""ImportId"":""QID7_6""}","{""ImportId"":""QID7_7""}","{""ImportId"":""QID7_8""}","{""ImportId"":""QID7_9""}","{""ImportId"":""QID7_10""}","{""ImportId"":""QID8_TEXT""}","{""ImportId"":""QID10_TEXT""}","{""ImportId"":""QID11_TEXT""}","{""ImportId"":""QID21_TEXT""}","{""ImportId"":""QID24_TEXT""}","{""ImportId"":""QID37_TEXT""}","{""ImportId"":""QID25_TEXT""}","{""ImportId"":""QID26_TEXT""}","{""ImportId"":""QID28_TEXT""}","{""ImportId"":""QID29""}","{""ImportId"":""QID29_6_TEXT""}","{""ImportId"":""QID30""}","{""ImportId"":""QID31""}","{""ImportId"":""QID31_10_TEXT""}","{""ImportId"":""QID32""}","{""ImportId"":""QID33""}","{""ImportId"":""QID34_TEXT""}","{""ImportId"":""QID35_TEXT""}","{""ImportId"":""QID36_TEXT""}","{""ImportId"":""QID37""}","{""ImportId"":""QID38""}","{""ImportId"":""QID39""}","{""ImportId"":""QID40""}","{""ImportId"":""QID41""}"
+1/23/2023 18:24,1/23/2023 18:32,1,100,518,1,1/23/2023 18:32,R_Z4cYwDWKhWFz3Nv,,preview,EN,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1/24/2023 0:45,1/24/2023 1:24,0,100,2329,1,1/24/2023 1:24,R_1QmEZHLkCv5WwsO,,anonymous,EN,1,1,2,2,5,5,3,5,2,2,1,5,3,3,2,7 30,"Flute Sonata, mvt 1",Prokofiev,1 - 130,"2:15-2:18
+2:59-3:02
+","42
+58-62","Autopilot, under the fingers, moments when you get into a new idea, establish a new space
+Once in that space your mind can wander
+Sometimes more technically demanding, sometimes when the theme comes back, controlling more extremes (technical demands or dynamics)",,20,1,,3,1,,0,1,12,Relatively often,"Yes, although rarely off-score",7.5,450,389,6,1
+1/24/2023 6:01,1/24/2023 6:15,0,100,824,1,1/24/2023 6:15,R_3e3atMlHpJD11wJ,,anonymous,EN,1,1,2,2,5,6,5,5,6,4,5,6,6,5,3,2 minutes 20 seconds,Concertino for trombone,Ferdinand David,42-82,"0:10 - 0:15
+
+0:38 - 0:45
+
+1:11 - 1:16","m.43 - 48
+
+63-67
+
+77-81","These were moments where I was the most confident about the notes that I was playing and the positions that I needed to use, so I was most absorbed in the music itself and thinking more about the shape of the melody and the emotion of the piece.","It was interesting to come back to a piece I had not played in a while and see which parts of it were more in my muscle memory than other sections, and which parts I remembered the best.",21,2,,3,1,,0,1,14,Around five times a term,"I do read music, but do not attempt to completely commit it to memory. However, over time as I become more familiar with the music I find that I have subconsciously learnt parts of it.",2.333333333,140,82,17,1
+1/24/2023 7:55,1/24/2023 8:23,0,100,1648,1,1/24/2023 8:23,R_31sJsWSuzQIitKL,,anonymous,EN,1,1,2,2,5,6,5,7,6,6,6,6,6,5,3,3 minutes 20 seconds,3rd Movement of Bach's Sonata in G Minor,J. S. Bach,1-121,"0:42-1:01
+2:29-2:39
+2:56-3:17","26-34
+50-54
+85-93
+111-121","They are the moments in the piece that I feel most confident playing. They often include changes in dynamics, and they also have some of the more complicated sections which I have worked hard to perfect in the past.","The performance is of a piece which I have played lots before, although I feel slightly out of practice (and out of breath!) so it is not the most comfortable I have been whilst playing it. ",20,2,,2,1,,0,1,8,"I play in public for an audience roughly once a month if it were to average out across the year, although I perform in front of others at rehearsals for roughly 7 hours per week.","Yes I do read music, but I very rarely learn music by heart - only if I am explicitly told or expected to by someone in charge of a performance.",3.333333333,200,197,50,1
+1/25/2023 5:23,1/25/2023 6:06,0,100,2544,1,1/25/2023 6:06,R_1N96EQ8FJvfZQYo,,anonymous,EN,1,1,1,3,1,2,5,5,6,4,4,6,5,6,4,3 minutes 30 seconds,Five bagatelles: III and IV,Gerald Finzi," Movement III: mm. 1-27, Movement IV: mm. 1-74","Movement III:
+0:15-0:24
+0:30-1:00
+1:20-1:43
+Movement IV:
+0:20-1:10
+1:30-1:50
+2:00-2:35
+2:40-2:48","Movement III:
+5-7
+9-17
+22-27
+Movement IV:
+11-33
+42-51
+54-69
+71-74
+","The moments at which I stopped being consciously aware of my performance were typically those at which I was most focused. This focus was lost when I made an error, or when a particular phrase was not played exactly how I intended it to sound. It was evident in the video that I lost focus and became consciously aware of my performance at these points because my movements became more deliberate and my phrasing was less fluid.","These pieces were certainly not stretching my technical ability. However, they were still challenging in their own ways as they made me focus far more on phrasing and articulation than I would while playing a study or a more technically challenging piece.",19,1,,2,6,Mixed White and Black Caribbean,0,1,9,Approximately once a month,"I do read music in five-line Western Classical notation. I occasionally learn music off by heart, but when I do it is not intentional.",3.5,210,273,175,1
+1/25/2023 6:15,1/25/2023 6:29,0,100,814,1,1/25/2023 6:29,R_2E1eSibOq6sHG70,,anonymous,EN,1,1,2,2,4,7,7,4,7,3,6,3,7,7,3,"2 minutes, 10 seconds","Horn Concerto No.4, Movement 1",W.A. Mozart,36-75,"0:00-0:10
+0:15-0:25
+0:38-0:48
+1:15-1:18","36-40
+45-50
+69 (second half of bar) - 75","generally they were the less technically difficult moments - any moments where I made a slip up or mistake would have taken me out of the moment, and I would have probably been distracted by making sure it didn't happen again until the next phrase.
+also, in bars 43-44 because the notes are longer I would have been less absorbed in what I was doing and more likely to have my mind wander.",,19,2,,2,1,,0,1,10,1-2 times per month,"Yes, and yes.",2.166666667,130,80,33,1
+1/26/2023 9:28,1/26/2023 9:51,0,100,1358,1,1/26/2023 9:51,R_2dRuLpBb9mKLU6F,,anonymous,EN,1,1,1,2,5,6,6,4,7,6,5,7,7,6,1,3 mins 45 seconds,Sonata no 2 in Eb (2nd movement - Allegro appasionnato) op 120,Brahms,"1-80, 95-223","0.35-0.54
+2.10-2.30
+3.21-3.38","36-53
+121-133
+188-204
+","The times when I was most absorbed were probably the times where I was most proficient with the music so did not need to concentrate as hard on the notes, so I found my mind wandering. Often this would make me lose my place in the music so I'd suddenly have to find it when I got to a bit I didn't know as well.","This is a piece I was very familiar with and had performed last week, making it easier to become absorbed in the music or thinking about other things, compared to one more technically challenging ",19,2,,2,1,,0,1,10,once or twice a year ,I do read music. I very rarely learn music by heart,3.75,225,242,56,1
+1/27/2023 1:54,1/27/2023 2:31,0,100,2237,1,1/27/2023 2:31,R_2WuJwHujEym0uXE,,anonymous,EN,1,1,4,3,5,5,2,3,6,6,5,4,4,3,6,3min 20sec,Reverie op.24,Alexandre Glazounow,1-end,"0:18-0:30
+0:48-1:07
+1:43-1:56
+2:10-2:20
+",,"Generally where I could play the music without focusing specifically on the music or fingerings, and where the music flowed more",,19,1,,2,1,,0,1,11,Every few months,Yes and no,3.333333333,200,175,54,0
+1/27/2023 2:56,1/27/2023 3:26,0,100,1836,1,1/27/2023 3:27,R_2TXjpaodOMWEG5H,,anonymous,EN,1,1,2,2,5,6,4,3,4,4,3,3,5,5,2,5 minutes 30 seconds,Poulenc Oboe Sonata mvt 1 'elegie',Poulenc,m. 1 - end,"1:33 - 2:30
+2:56 - 3:08
+4:04 - 4:27","m. 30 - 53
+m. 60 - 63
+m. 84 - 89","Tend to be the 'best' musical moments of the movement (in my opinion)
+Often slightly less technically demanding
+not really at points of main melody",some slightly dodgy playing at parts,20,1,,3,1,,0,1,9,average around once a month,yes and not often,5.5,330,284,92,1
+1/27/2023 5:21,1/27/2023 7:19,0,100,7114,1,1/27/2023 7:19,R_1dnxDScZiB9k6Fb,,anonymous,EN,1,1,3,1,3,1,7,4,7,3,5,6,7,7,2,3 minutes (180 seconds),Zest for Life,John Lubbock,1-139,"0.18-0.25
+0.38-0.45
+1.10-1.13
+1.43-1.53
+2.30-2.36","m. 6-13
+m. 21-24
+m. 48-49
+m. 75-80
+m. 105-107","We collaboratively wrote this piece for a music and dementia programme so the moments that i became absorbed in the music, i associated with previous memories. I remember the happy and joyful feeling of playing this music with friends so I enjoy several parts of this piece. ",,20,2,,3,1,,0,1,5,every 2/3 weeks,"yes I read music, and it depends on the context of the performance. For example, I learn all my music by memory in the funk band that I am in, but I wouldn't learn my wind orchestra parts off by heart. It can vary with solo performance, depending on if I have to do a public performance (i prefer to not be 'glued' to the stand)",3,180,197,33,0
+1/28/2023 8:40,1/28/2023 9:36,0,100,3331,1,1/28/2023 9:36,R_3JeIgkcQSMWBfDu,,anonymous,EN,1,1,4,2,2,6,6,7,6,4,4,5,6,4,3,2 mins 30 secs,Nocturno,Franz Strauss,m.2-52,"0.16-1.22
+1.27-1.36
+1.45-2.10
+2.10-2.25
+2.39-2.49","m.4-19
+m.21-24
+m.26-36
+m.37-41
+m.46-49
+
+","1 - had settled into the piece, enjoying playing it, over initial nerves and feeling of 'ooh how am I going to sound today'
+2 - main melody has come back again, but this time the second half is different so I was more focused on this new material, as well as my breathing as it was getting louder and so needed more support (but I'm a bit out of practice so wasn't playing as long phrases as usual) - powering through
+3- difficult bit over for now, and a small motif, but very fun and satisfying to play so was just thinking about that and how it should sound (not the performance itself)
+4 - again a fun bit to play, really like how it sounds, as it got towards end of phrase though, struggled to keep concentration all the way to the end/ became more aware of the surroundings again rather than just me and the music
+5 - really satisfying bit of music, just following along with the melodic line and the dynamics, before 'coming back into the room' again and realising it was near the end of the excerpt and getting ready to end ","Played this piece many years ago as an audition piece when I was in school, but it has fond memories rather than tense ones as it is so lovely to play - and really satisfying when it goes well. The melodic lines are really easy on the ear and although there are challenging aspects, they don't stick out so much as to take you away from enjoying playing. Today's performance was a bit more shaky and so thoughts about that often interrupted the 'flow', but that's always going to happen to some extent in live performances.",21,2,,3,1,,0,1,8,couple of concerts a term,yes and no,2.5,150,182,65,1
+2/11/2023 1:55,2/11/2023 2:31,0,100,2136,1,2/11/2023 2:31,R_28UROw92TrI26bD,,anonymous,EN,1,1,1,2,4,3,4,4,2,4,5,4,6,6,4,4.5 minutes ,It Could Happen To You,Jazz Standard - Jimmy Van-Heusen,"The whole head (melody), two choruses, and a head out. ","0.53-0.57
+1.26-1.30
+1.38-1.46
+2.03-2.07
+2.37-2.44
+3.07-3.10",N/A,"A lot of the moments when i felt absorbed in the music was moments in improvisation where i felt i had found a way of navigating the chord changes and had a fluid idea to expand on. Due to the nature of improvisation, where you always have to be calculating the harmony and possible directions to go, it can be difficult to be flow freely, and being 'in the zone' isn't always a common occurence, but moments where the ideas work tend to aid in being completely absorbed/immersed in the music. ","certain factors which contributed to me being less absorbed in the music where, the performance space. For example, i respond better to a larger audience and tend to be more focused and perform to a higher standard than in informal spaces where there is less to respond to in the room. Also playing with a backing track instead of a live band is more limiting due to a lack of response. ",19,2,,1,6,Arab/white,0,1,12,yes,"Yes, but most of it is lead sheet music where the melody is more of a guidance to be embellished. For performances i learn the music off by heart, but chord changes can be more difficult to memorise. ",4.5,270,198,30,0
+2/12/2023 4:24,2/12/2023 5:28,0,100,3824,1,2/12/2023 5:28,R_1M5Gyp1jMDTdZUf,,anonymous,EN,1,1,4,3,4,4,5,2,5,2,4,5,6,5,4,2 minutes 30 seconds,Concertino for Flugel Horn and Piano (movement 2),William Himes,m.6-49,"0:18-0:26
+0:46-0:50
+1:14-1:16","m.11-13
+pick up and m.19
+m.29",I was enjoying myself and appreciating the music and my new instrument :),I was distracted by the buzzing in my tone as I am getting used to playing without braces and it probably stops me from feeling 'in the moment' when I play.,20,2,,3,1,,0,1,12,5/6 times a term,Yes I read music and unfortunately I find it difficult to learn music by heart...,2.5,150,159,14,1
+2/13/2023 6:32,2/13/2023 7:24,0,100,3138,1,2/13/2023 7:24,R_2arWfAMXLmSoH6B,,anonymous,EN,1,1,1,2,5,7,6,7,6,5,5,5,6,5,5,2 minutes ,The Golden Wheat,Unknown - a folk melody,i sung the whole thing,"0:20-0:27
+0:44-0:47
+1:05-1:11
+1:25-1:34","m. 8-10
+m.16-18
+m.27-29
+m. 34-37",I've realised I was losing myself most in the performance at the ends of the verse/chorus structures and also at moments where I wasn't needing to think about technique eg. sustaining high notes or singing grace notes.,"The high note I felt most relaxed on was the last one, measure 32, as I felt I'd warmed up into the piece by that point.",19,2,,1,1,,0,1,10,"Three times a week (but in choir, so not solo)","I do, and it depends on the situation, but usually I'm able to memorise the notes (not the lyrics) of a piece fairly quickly.",2,120,141,25,1
+2/13/2023 7:24,2/13/2023 8:12,0,100,2845,1,2/13/2023 8:12,R_3ltptN2qv2F6iYE,,anonymous,EN,1,1,1,2,5,6,6,3,5,3,4,5,5,4,5,2 minutes,Suite III in C for cello solo BWV 1009: Gigue ,J.S. Bach,0-108 (complete; with repeats),"0:45-0:49
+0:57-1:07
+1:34-1:38
+1:54-2:01
+","44-48
+rpt. 9-20
+49-51
+69-75
+","Head movements seem to be more pronounced here, as well as mouth tension and maybe eyelids slightly more shut. I decided based on my memory mainly, not scrutinising the recording, but maybe one would be able to tell. Having chosen to play music with repeats (AABB), it seems I concentrated more on playing the second time better and was more free the first time around in general. I had no bowing or fingering markings prepared and was sight-reading to a small extent, so I was freest in the runs of easier notes with less rhythmic complexity or awkward fingering to worry about, I think. ","My facial expression is relaxed before and after playing, but shows a remarkably quick descent into concentration and vice versa. ",20,1,,3,4,,0,1,14,"During university, around 6 engagements a year as a soloist or chamber musician plus around 16 concerts a year in larger ensembles; also recording very casual Instagram content around once a month","I am a stronger sight-reader and weaker memoriser; I only memorise classical music when encouraged to for assessment purposes, and struggle with popular music which isn't notated. I have a habit of not annotating as much as I should, so I do memorise *how* to play the notated music. ",2,120,218,25,1
+2/14/2023 2:34,2/14/2023 3:01,0,100,1648,1,2/14/2023 3:01,R_3fO73LZWV11yIH1,,anonymous,EN,1,1,3,2,3,6,6,7,7,5,6,7,6,6,5,3 minutes 45 seconds,Sarabande from Partita No. 2,JS Bach,1-end,"0:28-0:30
+1:30 - 1:50
+2:15 - 2:27
+2:43 - 2:48
+3:06 - 3:37
+","m. 6
+m. 12 - 17
+m. 22 - 25
+m. 27 - 29
+m. 33 - 36","The first two sections noted are equivalent.
+Generally, when the music was easier with respect to technique, I became absorbed in the music.
+Paired notes eg. m. 23 make me particularly absorbed in the music.
+Most of the time, when absorbed in the music, I am just listening to the changing harmonies and the tension and release. ","Listening back, I was absorbed in the same places, although I found it harder to become absorbed when listening as I was more aware of tiny inaccuracies. ",21,1,,3,1,,0,1,16,Twice a month,"Yes, I read music. If playing a solo recital, I will generally play from memory. If I am just playing for fun or practicing, I will use music but aim to play by heart at the end of learning a piece. ",3.75,225,220,70,1
+2/14/2023 6:52,2/14/2023 7:32,0,100,2424,1,2/14/2023 7:32,R_9EnCtoEzlFjZRUR,,anonymous,EN,1,1,2,2,2,6,7,4,6,6,3,6,7,4,2,2 minutes 30 seconds,Nocturno ,Franz Strauss,m. 1-93,"0:17-1:23
+1:35-2:07
+3:20-3:45","6-26
+34-46
+70-79","Those moments where those that I played better - smooth transitions between notes meant I wasn't aware of the fact I was performing. When I made mistakes, I would become aware of myself and the performance",The lack of a piano accompaniment made the rests very self-aware as I could hear that there was a part missing.,20,1,,2,1,,0,1,11,Not regularly - a few times a term for orchestra concerts. No solo performances in the last years.,"Yes. I learn music by heart in that I don't need to look at the music at all times, but don't learn it to the point I can play it without the music. When practicing I don't aim to learn it by heart, I just become familiar enough with the music.",2.5,150,258,63,1
+2/16/2023 5:04,2/16/2023 5:23,0,100,1147,1,2/16/2023 5:23,R_3nr8L7rvN5wMI4c,,anonymous,EN,1,1,2,5,5,6,6,2,6,1,5,1,6,5,2,4:30,Trumpet concerto in Eb,Joseph Haydn,"m. 13-16, 37-83, 93-117, 125-163, 169-183",N/A,N/A,N/A,"Always aware of performance, as always evaluating and criticising it (counting mistakes, making a note of technique to practise or passages to look at); have to be aware in order to make it correct, and also trumpet is very physical/tactile, hard to ignore as it is breathing based. Some points of lack of awareness when piano improvising, but only when unheard by others. Preparing the Haydn for an audition, so have to be aware in order to know what to work on. Playing from memory, so always have to be aware; no crutch to come back to if I lose my place by being unaware of my performance",19,2,,1,1,,0,1,9,3-4 times a month,Yes to both,NA,NA,NA,NA,0
+2/17/2023 4:55,2/17/2023 5:30,0,100,2090,1,2/17/2023 5:30,R_1DqWxbqwN722Nva,,anonymous,EN,1,1,3,1,4,5,2,6,4,2,3,5,5,4,5,3 min,Bleuet,Francis Poulenc,the whole thing,"0:15-0:25
+0:59-1:03
+1:59-2:11","m. 6-8
+m. 18-21
+m. 34-39","Quite challenging piece - 
+As a singer thinking about the sound is more integral to the technique so to not think about how the music/sound relates to the body will have an impact on the overall sound quality
+",The room is rather small and very white - it seems not to have helped getting into the music more - the accompaniment on this piece also helps a great deal,20,2,,3,1,,0,0,13,Once every month,I do - I like to learn the music by heart to focus on technique and expression,3,180,175,26,1
+2/17/2023 5:54,2/17/2023 6:50,0,100,3343,1,2/17/2023 6:50,R_1JQHcuWUh9fUtWp,,anonymous,EN,1,1,4,2,5,4,3,5,2,2,2,2,2,2,2,a minute,do not go ,hage,1-end,"0:36-0:37 
+1:23-1:25
+1:39-1:41","14
+43-45
+48-49",more conscious of tone ,more concentrated and controlled with accompaniment to aid sense of rhythm and feeling ,20,2,,3,1,,1,1,10,once a week but non classical singing,yes and yes,1,60,103,5,1
+2/18/2023 2:02,2/18/2023 2:25,0,100,1336,1,2/18/2023 2:25,R_12Auv1SlyoU9bNH,,anonymous,EN,1,1,4,5,1,4,5,6,6,5,5,4,6,5,6,3 minutes 0 seconds,Syrinx,Debussy,all,"0:14-0:33
+0:42-1:18
+1:39-2:00
+2:03-2:35","m. 3-6
+m. 9-17
+m. 23-28
+m. 29-35",being absorbed in the music was most often interrupted by focusing on musical passages that I wasn't as familiar with or when I made mistakes,"I hadn't prepared for it/seen the piece in a long time, so it was a less comfortable performance than usual",20,2,,3,1,,0,1,12,5-10 times a year,"Yes I read music, and I sometimes learn the music by heart",3,180,158,109,0
+2/18/2023 3:57,2/18/2023 4:19,0,100,1345,1,2/18/2023 4:19,R_24k57cWTky3vkGm,,anonymous,EN,1,1,1,5,1,2,6,5,6,6,6,7,7,7,5,1 minute,Sonatine pour flute & piano,Claude Arrieu,m.1-33,"0:09-0:21
+0:28-0:38
+0:57-1:17","m.3-8
+m.12-16
+m.25-33",I was paying less attention to what was happening and was less conscious of me reading the music and just playing it.,,18,2,,1,1,,0,1,11,"Once every few months in an ensemble, but very rarely by myself","I don't consciously learn music by heart, but I'll often learn parts of it after playing it for a while.",1,60,81,42,1
+2/18/2023 4:20,2/18/2023 5:57,0,100,5813,1,2/18/2023 5:57,R_12fLGo6pXW4Ng6h,,anonymous,EN,1,1,4,3,5,4,5,3,6,6,5,6,6,6,2,3 minutes 40 seconds,Nocturne in C sharp minor,Chopin,m. 1-62,"1:17-1:29
+2:23-2:38","m. 19-22
+m. 44-47","These were moments when I felt much more in the flow of the music, like my hands were just playing freely.",,18,2,,1,1,,0,0,11,A couple of times a year,"I read music, and sometimes I do learn it by heart as well",3.67,220,222,22,1
+2/19/2023 9:54,2/19/2023 10:34,0,100,2396,1,2/19/2023 10:34,R_1q9X443RvttVE7g,,anonymous,EN,1,1,4,2,5,5,6,3,4,4,3,6,5,5,2,1 minute 30 seconds,A whole new World,Alan Manken,5- 3 before the end,"1:13-1:22
+1:50-2:00","44-53
+69-75","Very happy and relaxed in these parts. At the end, it felt like ""zoning back in.""",had to pause in between to scroll (as music score was online!),23,2,,4,4,,0,1,15,Infrequently. Previously used to perform a lot in orchestras though!,"Yes, but I don't tend to learn it by heart. ",1.5,90,121,19,1
+2/19/2023 10:34,2/19/2023 11:04,0,100,1798,1,2/19/2023 11:04,R_3Mteh8RkJMUqD2a,,anonymous,EN,1,1,2,2,2,6,5,4,7,6,6,6,6,7,6,3 minutes,Recorda Me,Joe Henderson,m10-92,"0.15-0.52
+1.02-1.10
+1.33-1.55
+2.15-2.34
+
+","m17-36
+m42-46
+m58-70
+m81-91
+","more melodic, easier to play",,22,2,,4,1,,0,1,9,about 4 times/month,"yes, normally learn by heart",3,180,157,86,1
+2/19/2023 11:49,2/19/2023 12:31,0,100,2514,1,2/19/2023 12:31,R_1Isom7lbzgJxyXf,,anonymous,EN,1,1,1,3,5,4,4,2,3,3,3,3,3,5,2,5 minutes and 30 seconds , Arabesque No.1,Debussy ,From beginning to end ,"2:38-2:54 
+3:17-3:48","57-62
+71-84",These moments are both anchoring in the structure of the piece and are my favorite parts harmonically. I knew where they were right away because I remember the feeling of fluidity whilst playing at those moments. ,It was the first I have played in a while and it felt slightly more difficult than usual to get into it. The first section is the same as measures 71-84 but it was only when those measures came around the final time that I felt I played fluidly.,21,2,,3,1,,0,1,13,I used to perform several times a week in public but haven't performed at all publicly in over three years.,Yes I read music and always learn a piece by heart eventually.,5.5,330,291,47,1
