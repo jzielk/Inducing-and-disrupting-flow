@@ -137,20 +137,21 @@ wsl
  midicsvpy -n p20_f01_d.mid p20_f01_d.csv
 ```
 <br>
+This directory (Excerpts) also contains three R Markdown files:<br>
+- After Condition Combining midi.Rmd<br>
+- Before Condition Combining midi.Rmd<br>
+- During Condition Combining midi.Rmd<br>
+<br>
+Run all of these files in RStudio to combine the excerpt .csv files into .csv files compiled by condition ready for feature analysis.<br>
 Each file results in one of three corresponding .csv files containing the midi information for all the excerpts in a condition (before, during, or after):<br>
 <br>
 - midi_flow_after.csv<br>
 - midi_flow_before.csv<br>
 - midi_flow_during.csv<br>
 <br>
-which are saved through the R Markdown script to the directory features-analysis/data/.<br>
+which are saved through the three R Markdown scripts above to the directory features-analysis/data/.<br>
 <br>
-This directory (Excerpts) also contains three R Markdown files:<br>
-- After Condition Combining midi.Rmd<br>
-- Before Condition Combining midi.Rmd<br>
-- During Condition Combining midi.Rmd<br>
-<br>
-Run all of these files in RStudio to combine the excerpt .csv files into .csv files compiled by condition ready for feature analysis.
+
 
 ## features-analysis<br>
 This directory contains the dataset files needed to run the features analysis in the paper (created from midi to .csv conversion above) as well as the R script (analysis.R) that can be run in RStudio to get the results reported in the paper under Melodic features analysis.<br>
