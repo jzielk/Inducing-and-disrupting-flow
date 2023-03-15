@@ -1,28 +1,33 @@
 # Inducing-and-disrupting-flow
 
-#Excerpts/<br>
+## Excerpts<br>
 <br>
-This directory contains three R Markdown files:<br>
-After Condition Combining midi.Rmd<br>
-Before Condition Combining midi.Rmd<br>
-During Condition Combining midi.Rmd<br>
+This directory contains a data directory, which includes all of the excerpt midi files and their corresponding .csv files.<br>
+<br>
+Files are named in the following format:<br>
+<br>
+pXX_fYY_condition.mid, or<br>
+pXX_fYY_condition.csv,<br>
+<br>
+where XX = participant number (01-20),<br>
+YY = flow instance number for that participant (01-03),<br>
+and condition = before, during, or after<br>
+<br>
+The .csv files were obtained by converting the midi files into a human-readable format using `py_midicsv` retrieved from https://github.com/timwedde/py_midicsv.<br>
+<br>
+The process for coverting the .mid files to .csv is as follows:<br>
+<br>
 
-Run all these files in RStudio to convert the excerpt midi files under directory Excerpts/Midi to .csv files using the process below. Each file results in one of three corresponding .csv files containing all of the midi information for a condition (before, during, or after):<br>
-<br>
-midi_flow_after.csv<br>
-midi_flow_before.csv<br>
-midi_flow_during.csv<br>
-<br>
-which are saved through the R Markdown script to the directory features-analysis/data/.<br>
+### Midi to csv conversion:
 
-##Midi to csv conversion:
 <br>
 Requirements: <br>
-Linux<br>
-Python<br>
-
+- Linux<br>
+- Python<br>
+<br>
 Run within Command Prompt:<br>
 <br>
+
 ```
 pip install py_midicsv
 cd Excerpts/Midi
@@ -131,15 +136,30 @@ wsl
  midicsvpy -n p20_f01_b.mid p20_f01_b.csv
  midicsvpy -n p20_f01_d.mid p20_f01_d.csv
 ```
+<br>
+Each file results in one of three corresponding .csv files containing the midi information for all the excerpts in a condition (before, during, or after):<br>
+<br>
+- midi_flow_after.csv<br>
+- midi_flow_before.csv<br>
+- midi_flow_during.csv<br>
+<br>
+which are saved through the R Markdown script to the directory features-analysis/data/.<br>
+<br>
+This directory (Excerpts) also contains three R Markdown files:<br>
+- After Condition Combining midi.Rmd<br>
+- Before Condition Combining midi.Rmd<br>
+- During Condition Combining midi.Rmd<br>
+<br>
+Run all of these files in RStudio to combine the excerpt .csv files into .csv files compiled by condition ready for feature analysis.
 
-#features-analysis/<br>
- This directory contains the dataset files needed to run the features analysis in the paper (created from midi to .csv conversion above) as well as the R script (analysis.R) that can be run in RStudio to get the results reported in the paper under Melodic features analysis.<br>
- <br>
-#flow-associations-analysis/<br>
- This directory contains the dataset files needed to run the flow associations analysis in the paper (data stored under flow-associations-analysis/data/ ) in additon to the R Markdown file (flow association analysis.Rmd) that can be run in RStudio to get the results reported in the paper under Flow associations.<br>
+## features-analysis<br>
+This directory contains the dataset files needed to run the features analysis in the paper (created from midi to .csv conversion above) as well as the R script (analysis.R) that can be run in RStudio to get the results reported in the paper under Melodic features analysis.<br>
 <br>
-#score-analysis/<br>
-This directory contains the dataset files needed to run the score analysis in the paper (data stored under score-analysis/data/ ) in additon to the R Markdown file (score_analysis_flow.Rmd) that can be run in RStudio to get the results reported in the paper under Score analysis.<br>
+## flow-associations-analysis<br>
+This directory contains the dataset files needed to run the flow associations analysis in the paper (data stored under flow-associations-analysis/data) in additon to the R Markdown file (flow association analysis.Rmd) that can be run in RStudio to get the results reported in the paper under Flow associations.<br>
 <br>
-#plots/<br>
-This directory contains the figures from the paper, Figure 1 to Figure 5. The directory also contains the components of Figure 4 as separate files, Figure 4a to Figure 4e.<br>
+## score-analysis<br>
+This directory contains the dataset files needed to run the score analysis in the paper (data stored under score-analysis/data) in additon to the R Markdown file (score_analysis_flow.Rmd) that can be run in RStudio to get the results reported in the paper under Score analysis.<br>
+<br>
+## plots<br>
+This directory additionally contains the figures from the paper, Figure 1 to Figure 5. In addition, the directory also contains the components of Figure 4 as separate files, Figure 4a to Figure 4e.<br>
