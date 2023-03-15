@@ -129,4 +129,14 @@ wsl
  midicsvpy -n p20_f01_b.mid p20_f01_b.csv
  midicsvpy -n p20_f01_d.mid p20_f01_d.csv
  
+#features-analysis/
+ This directory contains the dataset files needed to run the features analysis in the paper (created from midi to .csv conversion above) as well as the R script (analysis.R) that can be run in RStudio to get the results reported in the paper under Melodic features analysis.
  
+#flow-associations-analysis/
+ This directory contains the dataset files needed to run the flow associations analysis in the paper (data stored under flow-associations-analysis/data/ ) in additon to the R Markdown file (flow association analysis.Rmd) that can be run in RStudio to get the results reported in the paper under Flow associations.
+
+#score-analysis/
+This directory contains the dataset files needed to run the score analysis in the paper (data stored under score-analysis/data/ ) in additon to the R Markdown file (score_analysis_flow.Rmd) that can be run in RStudio to get the results reported in the paper under Score analysis.
+
+#plots/
+This directory contains the figures from the paper, Figure 1 to Figure 5. The directory also contains the components of Figure 4 as separate files, Figure 4a to Figure 4e.
