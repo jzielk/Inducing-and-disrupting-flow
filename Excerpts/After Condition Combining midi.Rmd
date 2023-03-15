@@ -1,0 +1,1505 @@
+---
+title: "flow analysis midi"
+author: "Julia Zielke"
+date: "2/14/2023"
+output: html_document
+---
+
+#Setup
+```{r packages}
+knitr::opts_chunk$set(echo = TRUE)
+
+if(!suppressWarnings(require(pacman))){install.packages("pacman");library("pacman")}
+p_load(tidyverse,
+       tidyr,
+       dplyr,
+       stats,
+       janitor,
+       qualtRics,
+       psych,
+       stringr)
+
+```
+#After Flow
+
+##Transforming Data to a format ready to combine together for all the flow instances
+
+##Participant 1
+```{r}
+# Importing .csv file:
+p01_f01_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p01_f01_a.csv", row.names=NULL))
+
+#renaming the columns given by midi to .csv conversion
+p01_f01_a <- p01_f01_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+#removing unnecessary rows
+p01_f01_a <- p01_f01_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+#Removing control events
+p01_f01_a <- p01_f01_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+#removing unnecessary columns, must be done after control events are removed
+p01_f01_a <- p01_f01_a[, -c(3, 4, 7)]
+
+#removing note stops
+p01_f01_a <- p01_f01_a %>%
+  filter(note_velocity != 0)
+
+#creating a melody degree variable, also sorts melody_degree to the front of the dataframe
+p01_f01_a <- p01_f01_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+#this will change the melody id for every participant and flow instance after this. This is the first one, so the ID remains 1.
+p01_f01_a <- p01_f01_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  1, melody_id)))
+
+#creating participant id variable to nest the melodies within
+p01_f01_a <- p01_f01_a %>%
+  mutate(participant_id = 1)
+
+#adding bar numbers of the flow instance from Qualtrics data
+p01_f01_a <- p01_f01_a %>%
+  mutate(bar_number = 4)
+```
+
+```{r}
+# Importing .csv file
+p01_f02_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p01_f02_a.csv", row.names=NULL))
+
+p01_f02_a <- p01_f02_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p01_f02_a <- p01_f02_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p01_f02_a <- p01_f02_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p01_f02_a <- p01_f02_a[, -c(3, 4, 7)]
+
+p01_f02_a <- p01_f02_a %>%
+  filter(note_velocity != 0)
+
+p01_f02_a <- p01_f02_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p01_f02_a <- p01_f02_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  2, melody_id)))
+
+p01_f02_a <- p01_f02_a %>%
+  mutate(participant_id = 1)
+
+p01_f02_a <- p01_f02_a %>%
+  mutate(bar_number = 4)
+```
+
+##Participant 2
+```{r}
+# Importing .csv file:
+p02_f01_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p02_f01_a.csv", row.names=NULL))
+
+p02_f01_a <- p02_f01_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p02_f01_a <- p02_f01_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p02_f01_a <- p02_f01_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p02_f01_a <- p02_f01_a[, -c(3, 4, 7)]
+
+p02_f01_a <- p02_f01_a %>%
+  filter(note_velocity != 0)
+
+p02_f01_a <- p02_f01_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p02_f01_a <- p02_f01_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  3, melody_id)))
+
+p02_f01_a <- p02_f01_a %>%
+  mutate(participant_id = 2)
+
+p02_f01_a <- p02_f01_a %>%
+  mutate(bar_number = 4)
+```
+
+```{r}
+# Importing .csv file
+p02_f02_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p02_f02_a.csv", row.names=NULL))
+
+p02_f02_a <- p02_f02_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p02_f02_a <- p02_f02_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p02_f02_a <- p02_f02_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p02_f02_a <- p02_f02_a[, -c(3, 4, 7)]
+
+p02_f02_a <- p02_f02_a %>%
+  filter(note_velocity != 0)
+
+p02_f02_a <- p02_f02_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p02_f02_a <- p02_f02_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  4, melody_id)))
+
+p02_f02_a <- p02_f02_a %>%
+  mutate(participant_id = 2)
+
+p02_f02_a <- p02_f02_a %>%
+  mutate(bar_number = 4)
+```
+
+```{r}
+# Importing .csv file
+p02_f03_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p02_f03_a.csv", row.names=NULL))
+
+p02_f03_a <- p02_f03_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p02_f03_a <- p02_f03_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p02_f03_a <- p02_f03_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p02_f03_a <- p02_f03_a[, -c(3, 4, 7)]
+
+p02_f03_a <- p02_f03_a %>%
+  filter(note_velocity != 0)
+
+p02_f03_a <- p02_f03_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p02_f03_a <- p02_f03_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  5, melody_id)))
+
+p02_f03_a <- p02_f03_a %>%
+  mutate(participant_id = 2)
+
+p02_f03_a <- p02_f03_a %>%
+  mutate(bar_number = 4)
+```
+
+
+###Participant 3
+```{r}
+# Importing .csv file:
+p03_f01_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p03_f01_a.csv", row.names=NULL))
+
+p03_f01_a <- p03_f01_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p03_f01_a <- p03_f01_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p03_f01_a <- p03_f01_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p03_f01_a <- p03_f01_a[, -c(3, 4, 7)]
+
+p03_f01_a <- p03_f01_a %>%
+  filter(note_velocity != 0)
+
+p03_f01_a <- p03_f01_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p03_f01_a <- p03_f01_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  6, melody_id)))
+
+p03_f01_a <- p03_f01_a %>%
+  mutate(participant_id = 3)
+
+p03_f01_a <- p03_f01_a %>%
+  mutate(bar_number = 4)
+```
+
+```{r}
+# Importing .csv file
+p03_f02_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p03_f02_a.csv", row.names=NULL))
+
+p03_f02_a <- p03_f02_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p03_f02_a <- p03_f02_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p03_f02_a <- p03_f02_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p03_f02_a <- p03_f02_a[, -c(3, 4, 7)]
+
+p03_f02_a <- p03_f02_a %>%
+  filter(note_velocity != 0)
+
+#filters out row that notates time signature change
+p03_f02_a <- p03_f02_a %>%
+  filter(note_midi_value != " 2")
+
+p03_f02_a <- p03_f02_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p03_f02_a <- p03_f02_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  7, melody_id)))
+
+p03_f02_a <- p03_f02_a %>%
+  mutate(participant_id = 3)
+
+p03_f02_a <- p03_f02_a %>%
+  mutate(bar_number = 4)
+
+
+```
+
+```{r}
+# Importing .csv file
+p03_f03_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p03_f03_a.csv", row.names=NULL))
+
+p03_f03_a <- p03_f03_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p03_f03_a <- p03_f03_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p03_f03_a <- p03_f03_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p03_f03_a <- p03_f03_a[, -c(3, 4, 7)]
+
+p03_f03_a <- p03_f03_a %>%
+  filter(note_velocity != 0)
+
+p03_f03_a <- p03_f03_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p03_f03_a <- p03_f03_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  8, melody_id)))
+
+p03_f03_a <- p03_f03_a %>%
+  mutate(participant_id = 3)
+
+p03_f03_a <- p03_f03_a %>%
+  mutate(bar_number = 4)
+```
+
+##Participant 4
+```{r}
+# Importing .csv file:
+p04_f01_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p04_f01_a.csv", row.names=NULL))
+
+p04_f01_a <- p04_f01_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p04_f01_a <- p04_f01_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p04_f01_a <- p04_f01_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p04_f01_a <- p04_f01_a[, -c(3, 4, 7)]
+
+p04_f01_a <- p04_f01_a %>%
+  filter(note_velocity != 0)
+
+p04_f01_a <- p04_f01_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p04_f01_a <- p04_f01_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  9, melody_id)))
+
+p04_f01_a <- p04_f01_a %>%
+  mutate(participant_id = 4)
+
+p04_f01_a <- p04_f01_a %>%
+  mutate(bar_number = 4)
+```
+
+##Participant 5
+```{r}
+# Importing .csv file:
+p05_f01_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p05_f01_a.csv", row.names=NULL))
+
+p05_f01_a <- p05_f01_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p05_f01_a <- p05_f01_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p05_f01_a <- p05_f01_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p05_f01_a <- p05_f01_a[, -c(3, 4, 7)]
+
+p05_f01_a <- p05_f01_a %>%
+  filter(note_velocity != 0)
+
+p05_f01_a <- p05_f01_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p05_f01_a <- p05_f01_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  10, melody_id)))
+
+p05_f01_a <- p05_f01_a %>%
+  mutate(participant_id = 5)
+
+p05_f01_a <- p05_f01_a %>%
+  mutate(bar_number = 4)
+```
+
+##Participant 6
+```{r}
+# Importing .csv file:
+p06_f01_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p06_f01_a.csv", row.names=NULL))
+
+p06_f01_a <- p06_f01_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p06_f01_a <- p06_f01_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p06_f01_a <- p06_f01_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p06_f01_a <- p06_f01_a[, -c(3, 4, 7)]
+
+p06_f01_a <- p06_f01_a %>%
+  filter(note_velocity != 0)
+
+p06_f01_a <- p06_f01_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p06_f01_a <- p06_f01_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  11, melody_id)))
+
+p06_f01_a <- p06_f01_a %>%
+  mutate(participant_id = 6)
+
+p06_f01_a <- p06_f01_a %>%
+  mutate(bar_number = 4)
+```
+
+```{r}
+# Importing .csv file:
+p06_f02_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p06_f02_a.csv", row.names=NULL))
+
+p06_f02_a <- p06_f02_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p06_f02_a <- p06_f02_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p06_f02_a <- p06_f02_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p06_f02_a <- p06_f02_a[, -c(3, 4, 7)]
+
+p06_f02_a <- p06_f02_a %>%
+  filter(note_velocity != 0)
+
+p06_f02_a <- p06_f02_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p06_f02_a <- p06_f02_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  12, melody_id)))
+
+p06_f02_a <- p06_f02_a %>%
+  mutate(participant_id = 6)
+
+p06_f02_a <- p06_f02_a %>%
+  mutate(bar_number = 4)
+```
+
+##Participant 7
+```{r}
+# Importing .csv file:
+p07_f01_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p07_f01_a.csv", row.names=NULL))
+
+p07_f01_a <- p07_f01_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p07_f01_a <- p07_f01_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p07_f01_a <- p07_f01_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p07_f01_a <- p07_f01_a[, -c(3, 4, 7)]
+
+p07_f01_a <- p07_f01_a %>%
+  filter(note_velocity != 0)
+
+p07_f01_a <- p07_f01_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p07_f01_a <- p07_f01_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  13, melody_id)))
+
+p07_f01_a <- p07_f01_a %>%
+  mutate(participant_id = 7)
+
+p07_f01_a <- p07_f01_a %>%
+  mutate(bar_number = 4)
+```
+
+```{r}
+# Importing .csv file:
+p07_f02_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p07_f02_a.csv", row.names=NULL))
+
+p07_f02_a <- p07_f02_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p07_f02_a <- p07_f02_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p07_f02_a <- p07_f02_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p07_f02_a <- p07_f02_a[, -c(3, 4, 7)]
+
+p07_f02_a <- p07_f02_a %>%
+  filter(note_velocity != 0)
+
+p07_f02_a <- p07_f02_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p07_f02_a <- p07_f02_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  14, melody_id)))
+
+p07_f02_a <- p07_f02_a %>%
+  mutate(participant_id = 7)
+
+p07_f02_a <- p07_f02_a %>%
+  mutate(bar_number = 4)
+```
+
+##Participant 8
+```{r}
+# Importing .csv file:
+p08_f01_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p08_f01_a.csv", row.names=NULL))
+
+p08_f01_a <- p08_f01_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p08_f01_a <- p08_f01_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p08_f01_a <- p08_f01_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p08_f01_a <- p08_f01_a[, -c(3, 4, 7)]
+
+p08_f01_a <- p08_f01_a %>%
+  filter(note_velocity != 0)
+
+p08_f01_a <- p08_f01_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p08_f01_a <- p08_f01_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  15, melody_id)))
+
+p08_f01_a <- p08_f01_a %>%
+  mutate(participant_id = 8)
+
+p08_f01_a <- p08_f01_a %>%
+  mutate(bar_number = 4)
+```
+
+##Participant 9
+```{r}
+# Importing .csv file:
+p09_f01_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p09_f01_a.csv", row.names=NULL))
+
+p09_f01_a <- p09_f01_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p09_f01_a <- p09_f01_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p09_f01_a <- p09_f01_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p09_f01_a <- p09_f01_a[, -c(3, 4, 7)]
+
+p09_f01_a <- p09_f01_a %>%
+  filter(note_velocity != 0)
+
+p09_f01_a <- p09_f01_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p09_f01_a <- p09_f01_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  16, melody_id)))
+
+p09_f01_a <- p09_f01_a %>%
+  mutate(participant_id = 9)
+
+p09_f01_a <- p09_f01_a %>%
+  mutate(bar_number = 4)
+```
+
+```{r}
+# Importing .csv file:
+p09_f02_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p09_f02_a.csv", row.names=NULL))
+
+p09_f02_a <- p09_f02_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p09_f02_a <- p09_f02_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p09_f02_a <- p09_f02_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p09_f02_a <- p09_f02_a[, -c(3, 4, 7)]
+
+p09_f02_a <- p09_f02_a %>%
+  filter(note_velocity != 0)
+
+p09_f02_a <- p09_f02_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p09_f02_a <- p09_f02_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  17, melody_id)))
+
+p09_f02_a <- p09_f02_a %>%
+  mutate(participant_id = 9)
+
+p09_f02_a <- p09_f02_a %>%
+  mutate(bar_number = 4)
+```
+
+##Participant 10
+```{r}
+# Importing .csv file:
+p10_f01_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p10_f01_a.csv", row.names=NULL))
+
+p10_f01_a <- p10_f01_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p10_f01_a <- p10_f01_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p10_f01_a <- p10_f01_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p10_f01_a <- p10_f01_a[, -c(3, 4, 7)]
+
+p10_f01_a <- p10_f01_a %>%
+  filter(note_velocity != 0)
+
+p10_f01_a <- p10_f01_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p10_f01_a <- p10_f01_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  18, melody_id)))
+
+p10_f01_a <- p10_f01_a %>%
+  mutate(participant_id = 10)
+
+p10_f01_a <- p10_f01_a %>%
+  mutate(bar_number = 4)
+```
+
+```{r}
+# Importing .csv file:
+p10_f02_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p10_f02_a.csv", row.names=NULL))
+
+p10_f02_a <- p10_f02_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p10_f02_a <- p10_f02_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p10_f02_a <- p10_f02_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p10_f02_a <- p10_f02_a[, -c(3, 4, 7)]
+
+p10_f02_a <- p10_f02_a %>%
+  filter(note_velocity != 0)
+
+p10_f02_a <- p10_f02_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p10_f02_a <- p10_f02_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  19, melody_id)))
+
+p10_f02_a <- p10_f02_a %>%
+  mutate(participant_id = 10)
+
+p10_f02_a <- p10_f02_a %>%
+  mutate(bar_number = 4)
+```
+
+##Participant 11
+```{r}
+# Importing .csv file:
+p11_f01_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p11_f01_a.csv", row.names=NULL))
+
+p11_f01_a <- p11_f01_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p11_f01_a <- p11_f01_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p11_f01_a <- p11_f01_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p11_f01_a <- p11_f01_a[, -c(3, 4, 7)]
+
+p11_f01_a <- p11_f01_a %>%
+  filter(note_velocity != 0)
+
+p11_f01_a <- p11_f01_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p11_f01_a <- p11_f01_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  20, melody_id)))
+
+p11_f01_a <- p11_f01_a %>%
+  mutate(participant_id = 11)
+
+p11_f01_a <- p11_f01_a %>%
+  mutate(bar_number = 4)
+```
+
+##Participant 12
+```{r}
+# Importing .csv file:
+p12_f01_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p12_f01_a.csv", row.names=NULL))
+
+p12_f01_a <- p12_f01_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p12_f01_a <- p12_f01_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p12_f01_a <- p12_f01_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p12_f01_a <- p12_f01_a[, -c(3, 4, 7)]
+
+p12_f01_a <- p12_f01_a %>%
+  filter(note_velocity != 0)
+
+p12_f01_a <- p12_f01_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p12_f01_a <- p12_f01_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  21, melody_id)))
+
+p12_f01_a <- p12_f01_a %>%
+  mutate(participant_id = 12)
+
+p12_f01_a <- p12_f01_a %>%
+  mutate(bar_number = 4)
+```
+
+```{r}
+# Importing .csv file:
+p12_f02_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p12_f02_a.csv", row.names=NULL))
+
+p12_f02_a <- p12_f02_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p12_f02_a <- p12_f02_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p12_f02_a <- p12_f02_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p12_f02_a <- p12_f02_a[, -c(3, 4, 7)]
+
+p12_f02_a <- p12_f02_a %>%
+  filter(note_velocity != 0)
+
+p12_f02_a <- p12_f02_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p12_f02_a <- p12_f02_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  22, melody_id)))
+
+p12_f02_a <- p12_f02_a %>%
+  mutate(participant_id = 12)
+
+p12_f02_a <- p12_f02_a %>%
+  mutate(bar_number = 4)
+```
+
+##Participant 13
+```{r}
+# Importing .csv file:
+p13_f01_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p13_f01_a.csv", row.names=NULL))
+
+p13_f01_a <- p13_f01_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p13_f01_a <- p13_f01_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p13_f01_a <- p13_f01_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p13_f01_a <- p13_f01_a[, -c(3, 4, 7)]
+
+p13_f01_a <- p13_f01_a %>%
+  filter(note_velocity != 0)
+
+p13_f01_a <- p13_f01_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p13_f01_a <- p13_f01_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  23, melody_id)))
+
+p13_f01_a <- p13_f01_a %>%
+  mutate(participant_id = 13)
+
+p13_f01_a <- p13_f01_a %>%
+  mutate(bar_number = 4)
+```
+
+```{r}
+# Importing .csv file:
+p13_f02_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p13_f02_a.csv", row.names=NULL))
+
+p13_f02_a <- p13_f02_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p13_f02_a <- p13_f02_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p13_f02_a <- p13_f02_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p13_f02_a <- p13_f02_a[, -c(3, 4, 7)]
+
+p13_f02_a <- p13_f02_a %>%
+  filter(note_velocity != 0)
+
+p13_f02_a <- p13_f02_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p13_f02_a <- p13_f02_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  24, melody_id)))
+
+p13_f02_a <- p13_f02_a %>%
+  mutate(participant_id = 13)
+
+p13_f02_a <- p13_f02_a %>%
+  mutate(bar_number = 4)
+```
+
+##Participant 14
+```{r}
+# Importing .csv file:
+p14_f01_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p14_f01_a.csv", row.names=NULL))
+
+p14_f01_a <- p14_f01_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p14_f01_a <- p14_f01_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p14_f01_a <- p14_f01_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p14_f01_a <- p14_f01_a[, -c(3, 4, 7)]
+
+p14_f01_a <- p14_f01_a %>%
+  filter(note_velocity != 0)
+
+p14_f01_a <- p14_f01_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p14_f01_a <- p14_f01_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  25, melody_id)))
+
+p14_f01_a <- p14_f01_a %>%
+  mutate(participant_id = 14)
+
+p14_f01_a <- p14_f01_a %>%
+  mutate(bar_number = 4)
+```
+
+```{r}
+# Importing .csv file:
+p14_f02_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p14_f02_a.csv", row.names=NULL))
+
+p14_f02_a <- p14_f02_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p14_f02_a <- p14_f02_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p14_f02_a <- p14_f02_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p14_f02_a <- p14_f02_a[, -c(3, 4, 7)]
+
+p14_f02_a <- p14_f02_a %>%
+  filter(note_velocity != 0)
+
+#filters out row that notates time signature change
+p14_f02_a <- p14_f02_a %>%
+  filter(note_midi_value != " 2")
+
+p14_f02_a <- p14_f02_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p14_f02_a <- p14_f02_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  26, melody_id)))
+
+p14_f02_a <- p14_f02_a %>%
+  mutate(participant_id = 14)
+
+p14_f02_a <- p14_f02_a %>%
+  mutate(bar_number = 4)
+```
+
+```{r}
+# Importing .csv file:
+p14_f03_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p14_f03_a.csv", row.names=NULL))
+
+p14_f03_a <- p14_f03_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p14_f03_a <- p14_f03_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p14_f03_a <- p14_f03_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p14_f03_a <- p14_f03_a[, -c(3, 4, 7)]
+
+p14_f03_a <- p14_f03_a %>%
+  filter(note_velocity != 0)
+
+p14_f03_a <- p14_f03_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p14_f03_a <- p14_f03_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  27, melody_id)))
+
+p14_f03_a <- p14_f03_a %>%
+  mutate(participant_id = 14)
+
+p14_f03_a <- p14_f03_a %>%
+  mutate(bar_number = 4)
+```
+
+##Participant 15
+```{r}
+# Importing .csv file:
+p15_f01_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p15_f01_a.csv", row.names=NULL))
+
+p15_f01_a <- p15_f01_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p15_f01_a <- p15_f01_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p15_f01_a <- p15_f01_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p15_f01_a <- p15_f01_a[, -c(3, 4, 7)]
+
+p15_f01_a <- p15_f01_a %>%
+  filter(note_velocity != 0)
+
+p15_f01_a <- p15_f01_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p15_f01_a <- p15_f01_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  28, melody_id)))
+
+p15_f01_a <- p15_f01_a %>%
+  mutate(participant_id = 15)
+
+p15_f01_a <- p15_f01_a %>%
+  mutate(bar_number = 4)
+```
+
+##Participant 16
+```{r}
+# Importing .csv file:
+p16_f01_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p16_f01_a.csv", row.names=NULL))
+
+p16_f01_a <- p16_f01_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p16_f01_a <- p16_f01_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p16_f01_a <- p16_f01_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p16_f01_a <- p16_f01_a[, -c(3, 4, 7)]
+
+p16_f01_a <- p16_f01_a %>%
+  filter(note_velocity != 0)
+
+p16_f01_a <- p16_f01_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p16_f01_a <- p16_f01_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  29, melody_id)))
+
+p16_f01_a <- p16_f01_a %>%
+  mutate(participant_id = 16)
+
+p16_f01_a <- p16_f01_a %>%
+  mutate(bar_number = 4)
+```
+
+##Participant 17
+```{r}
+# Importing .csv file:
+p17_f01_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p17_f01_a.csv", row.names=NULL))
+
+p17_f01_a <- p17_f01_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p17_f01_a <- p17_f01_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p17_f01_a <- p17_f01_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p17_f01_a <- p17_f01_a[, -c(3, 4, 7)]
+
+p17_f01_a <- p17_f01_a %>%
+  filter(note_velocity != 0)
+
+p17_f01_a <- p17_f01_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p17_f01_a <- p17_f01_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  30, melody_id)))
+
+p17_f01_a <- p17_f01_a %>%
+  mutate(participant_id = 17)
+
+p17_f01_a <- p17_f01_a %>%
+  mutate(bar_number = 4)
+```
+
+##Participant 18
+```{r}
+# Importing .csv file:
+p18_f01_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p18_f01_a.csv", row.names=NULL))
+
+p18_f01_a <- p18_f01_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p18_f01_a <- p18_f01_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p18_f01_a <- p18_f01_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p18_f01_a <- p18_f01_a[, -c(3, 4, 7)]
+
+p18_f01_a <- p18_f01_a %>%
+  filter(note_velocity != 0)
+
+p18_f01_a <- p18_f01_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p18_f01_a <- p18_f01_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  31, melody_id)))
+
+p18_f01_a <- p18_f01_a %>%
+  mutate(participant_id = 18)
+
+p18_f01_a <- p18_f01_a %>%
+  mutate(bar_number = 4)
+```
+
+##Participant 19
+```{r}
+# Importing .csv file:
+p19_f01_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p19_f01_a.csv", row.names=NULL))
+
+p19_f01_a <- p19_f01_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p19_f01_a <- p19_f01_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p19_f01_a <- p19_f01_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p19_f01_a <- p19_f01_a[, -c(3, 4, 7)]
+
+p19_f01_a <- p19_f01_a %>%
+  filter(note_velocity != 0)
+
+p19_f01_a <- p19_f01_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p19_f01_a <- p19_f01_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  32, melody_id)))
+
+p19_f01_a <- p19_f01_a %>%
+  mutate(participant_id = 19)
+
+p19_f01_a <- p19_f01_a %>%
+  mutate(bar_number = 4)
+```
+
+```{r}
+# Importing .csv file:
+p19_f02_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p19_f02_a.csv", row.names=NULL))
+
+p19_f02_a <- p19_f02_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p19_f02_a <- p19_f02_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p19_f02_a <- p19_f02_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p19_f02_a <- p19_f02_a[, -c(3, 4, 7)]
+
+p19_f02_a <- p19_f02_a %>%
+  filter(note_velocity != 0)
+
+p19_f02_a <- p19_f02_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p19_f02_a <- p19_f02_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  33, melody_id)))
+
+p19_f02_a <- p19_f02_a %>%
+  mutate(participant_id = 19)
+
+p19_f02_a <- p19_f02_a %>%
+  mutate(bar_number = 4)
+```
+
+##Participant 20
+```{r}
+# Importing .csv file:
+p20_f01_a <- as.tibble(
+  read.csv(
+    "Excerpts/Midi/p20_f01_a.csv", row.names=NULL))
+
+p20_f01_a <- p20_f01_a %>%
+  rename(melody_id = row.names, 
+         note_onset = X0,
+         note_midi_value = X1,
+         note_velocity = X1.1
+           ) 
+
+p20_f01_a <- p20_f01_a[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),]
+
+p20_f01_a <- p20_f01_a %>%
+  filter(!str_detect(X0.1, "Control"))
+
+p20_f01_a <- p20_f01_a[, -c(3, 4, 7)]
+
+p20_f01_a <- p20_f01_a %>%
+  filter(note_velocity != 0)
+
+p20_f01_a <- p20_f01_a %>%
+  mutate(melody_degree
+= row_number()) %>%
+  relocate(melody_degree, .after = melody_id)
+
+p20_f01_a <- p20_f01_a %>% 
+  mutate_at(.vars = vars(melody_id),
+             .funs = list(~ifelse((melody_id
+  == 1),
+  34, melody_id)))
+
+p20_f01_a <- p20_f01_a %>%
+  mutate(participant_id = 20)
+
+p20_f01_a <- p20_f01_a %>%
+  mutate(bar_number = 4)
+```
+
+#Combining all events together
+```{r}
+all_df <- rbind(p01_f01_a, 
+                p01_f02_a, 
+                p02_f01_a, 
+                p02_f02_a, 
+                p02_f03_a,
+                p03_f01_a, 
+                p03_f02_a, 
+                p03_f03_a,
+                p04_f01_a,
+                p05_f01_a,
+                p06_f01_a,
+                p06_f02_a,
+                p07_f01_a,
+                p07_f02_a,
+                p08_f01_a,
+                p09_f01_a,
+                p09_f02_a,
+                p10_f01_a,
+                p10_f02_a,
+                p11_f01_a,
+                p12_f01_a,
+                p12_f02_a,
+                p13_f01_a,
+                p13_f02_a,
+                p14_f01_a,
+                p14_f02_a,
+                p14_f03_a,
+                p15_f01_a,
+                p16_f01_a,
+                p17_f01_a,
+                p18_f01_a,
+                p19_f01_a,
+                p19_f02_a,
+                p20_f01_a
+                )
+```
+
+#Write .csv
+```{r exporting recoded data as a .csv file, echo=TRUE}
+write_csv(all_df, "features-analysis/data/midi_flow_after.csv")
+```
+
+
