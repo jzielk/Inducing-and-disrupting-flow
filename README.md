@@ -22,16 +22,16 @@ The process for coverting the .mid files to .csv is as follows:<br>
 
 <br>
 Requirements: <br>
-- Linux<br>
+- Linux on Windows<br>
 - Python3<br>
 <br>
-Run within Command Prompt:<br>
+Run within Windows Command Prompt:<br>
 <br>
 
 ```
-pip install py_midicsv
 cd Excerpts/Midi
 wsl
+pip install py_midicsv
 
  midicsvpy -n p01_f01_a.mid p01_f01_a.csv
  midicsvpy -n p01_f01_b.mid p01_f01_b.csv
