@@ -1,0 +1,94 @@
+0, 0, Header, 1, 1, 480
+1, 0, Start_track
+1, 0, Title_t, "Tenor Saxophone\000"
+1, 0, Time_signature, 4, 2, 24, 8
+1, 0, Key_signature, 2, "major"
+1, 0, Tempo, 340909
+1, 0, Control_c, 0, 121, 0
+1, 0, Program_c, 0, 66
+1, 0, Control_c, 0, 7, 100
+1, 0, Control_c, 0, 10, 64
+1, 0, Control_c, 0, 91, 0
+1, 0, Control_c, 0, 93, 0
+1, 0, MIDI_port, 0
+1, 480, Note_on_c, 0, 54, 80
+1, 480, Control_c, 0, 2, 80
+1, 599, Note_on_c, 0, 54, 0
+1, 600, Note_on_c, 0, 55, 80
+1, 719, Note_on_c, 0, 55, 0
+1, 720, Note_on_c, 0, 58, 80
+1, 839, Note_on_c, 0, 58, 0
+1, 840, Note_on_c, 0, 62, 80
+1, 959, Note_on_c, 0, 62, 0
+1, 960, Note_on_c, 0, 65, 80
+1, 1079, Note_on_c, 0, 65, 0
+1, 1080, Note_on_c, 0, 62, 80
+1, 1199, Note_on_c, 0, 62, 0
+1, 1200, Note_on_c, 0, 63, 80
+1, 1319, Note_on_c, 0, 63, 0
+1, 1320, Note_on_c, 0, 64, 80
+1, 1439, Note_on_c, 0, 64, 0
+1, 1440, Note_on_c, 0, 60, 80
+1, 1559, Note_on_c, 0, 60, 0
+1, 1560, Note_on_c, 0, 61, 80
+1, 1679, Note_on_c, 0, 61, 0
+1, 1680, Note_on_c, 0, 62, 80
+1, 1799, Note_on_c, 0, 62, 0
+1, 1800, Note_on_c, 0, 61, 80
+1, 1919, Note_on_c, 0, 61, 0
+1, 1920, Note_on_c, 0, 60, 80
+1, 2039, Note_on_c, 0, 60, 0
+1, 2040, Note_on_c, 0, 58, 80
+1, 2159, Note_on_c, 0, 58, 0
+1, 2160, Note_on_c, 0, 57, 80
+1, 2279, Note_on_c, 0, 57, 0
+1, 2280, Note_on_c, 0, 55, 80
+1, 2399, Note_on_c, 0, 55, 0
+1, 2400, Note_on_c, 0, 53, 80
+1, 2639, Note_on_c, 0, 53, 0
+1, 3120, Note_on_c, 0, 52, 80
+1, 3166, Note_on_c, 0, 52, 0
+1, 3167, Note_on_c, 0, 53, 80
+1, 3213, Note_on_c, 0, 53, 0
+1, 3215, Note_on_c, 0, 54, 80
+1, 3261, Note_on_c, 0, 54, 0
+1, 3264, Note_on_c, 0, 55, 80
+1, 3310, Note_on_c, 0, 55, 0
+1, 3311, Note_on_c, 0, 56, 80
+1, 3357, Note_on_c, 0, 56, 0
+1, 3359, Note_on_c, 0, 57, 80
+1, 3405, Note_on_c, 0, 57, 0
+1, 3408, Note_on_c, 0, 58, 80
+1, 3454, Note_on_c, 0, 58, 0
+1, 3455, Note_on_c, 0, 59, 80
+1, 3501, Note_on_c, 0, 59, 0
+1, 3503, Note_on_c, 0, 60, 80
+1, 3549, Note_on_c, 0, 60, 0
+1, 3552, Note_on_c, 0, 61, 80
+1, 3598, Note_on_c, 0, 61, 0
+1, 3599, Note_on_c, 0, 62, 80
+1, 3645, Note_on_c, 0, 62, 0
+1, 3647, Note_on_c, 0, 63, 80
+1, 3693, Note_on_c, 0, 63, 0
+1, 3696, Note_on_c, 0, 64, 80
+1, 3742, Note_on_c, 0, 64, 0
+1, 3743, Note_on_c, 0, 65, 80
+1, 3789, Note_on_c, 0, 65, 0
+1, 3791, Note_on_c, 0, 66, 80
+1, 3837, Note_on_c, 0, 66, 0
+1, 3840, Note_on_c, 0, 67, 80
+1, 4559, Note_on_c, 0, 67, 0
+1, 4560, Note_on_c, 0, 65, 80
+1, 4799, Note_on_c, 0, 65, 0
+1, 4800, Note_on_c, 0, 67, 80
+1, 5119, Note_on_c, 0, 67, 0
+1, 5120, Note_on_c, 0, 65, 80
+1, 5439, Note_on_c, 0, 65, 0
+1, 5440, Note_on_c, 0, 64, 80
+1, 5759, Note_on_c, 0, 64, 0
+1, 5760, Note_on_c, 0, 60, 80
+1, 6479, Note_on_c, 0, 60, 0
+1, 6480, Note_on_c, 0, 71, 80
+1, 7679, Note_on_c, 0, 71, 0
+1, 7680, End_track
+0, 0, End_of_file
