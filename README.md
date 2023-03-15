@@ -149,7 +149,7 @@ Each file results in one of three corresponding .csv files containing the midi i
 - midi_flow_before.csv<br>
 - midi_flow_during.csv<br>
 <br>
-which are saved through the three R Markdown scripts above to the directory features-analysis/data/.<br>
+which are saved through the three R Markdown scripts above to the directory features-analysis/data.<br>
 <br>
 
 
