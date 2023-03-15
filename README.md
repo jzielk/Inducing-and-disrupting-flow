@@ -1,12 +1,26 @@
 # Inducing-and-disrupting-flow
 
-#Midi to csv conversion:
+#Excerpts/
+This directory contains three R Markdown files:
+After Condition Combining midi.Rmd
+Before Condition Combining midi.Rmd
+During Condition Combining midi.Rmd
+
+Run all these files in RStudio to convert the excerpt midi files under directory Excerpts/Midi to .csv files using the process below. Each file results in one of three corresponding .csv files containing all of the midi information for a condition (before, during, or after):
+
+midi_flow_after.csv
+midi_flow_before.csv
+midi_flow_during.csv
+
+which are saved through the R Markdown script to the directory features-analysis/data/.
+
+##Midi to csv conversion:
 
 Requirements: 
 Linux
 Python
 
-From Command Prompt:
+Run within Command Prompt:
 
 pip install py_midicsv
 cd Excerpts/Midi
@@ -114,4 +128,5 @@ wsl
  midicsvpy -n p20_f01_a.mid p20_f01_a.csv
  midicsvpy -n p20_f01_b.mid p20_f01_b.csv
  midicsvpy -n p20_f01_d.mid p20_f01_d.csv
+ 
  
