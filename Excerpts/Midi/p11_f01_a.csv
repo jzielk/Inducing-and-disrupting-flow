@@ -1,0 +1,78 @@
+0, 0, Header, 1, 1, 480
+1, 0, Start_track
+1, 0, Title_t, "Violoncello\000"
+1, 0, Time_signature, 3, 3, 24, 8
+1, 0, Key_signature, 0, "major"
+1, 0, Tempo, 500000
+1, 0, Control_c, 0, 121, 0
+1, 0, Program_c, 0, 42
+1, 0, Control_c, 0, 7, 100
+1, 0, Control_c, 0, 10, 64
+1, 0, Control_c, 0, 91, 0
+1, 0, Control_c, 0, 93, 0
+1, 0, MIDI_port, 0
+1, 0, Note_on_c, 0, 52, 80
+1, 0, Control_c, 0, 2, 80
+1, 0, Control_c, 1, 121, 0
+1, 0, Program_c, 1, 45
+1, 0, Control_c, 1, 7, 100
+1, 0, Control_c, 1, 10, 64
+1, 0, Control_c, 1, 91, 0
+1, 0, Control_c, 1, 93, 0
+1, 0, MIDI_port, 0
+1, 0, Control_c, 2, 121, 0
+1, 0, Program_c, 2, 44
+1, 0, Control_c, 2, 7, 100
+1, 0, Control_c, 2, 10, 64
+1, 0, Control_c, 2, 91, 0
+1, 0, Control_c, 2, 93, 0
+1, 0, MIDI_port, 0
+1, 119, Note_on_c, 0, 52, 0
+1, 120, Note_on_c, 0, 53, 80
+1, 239, Note_on_c, 0, 53, 0
+1, 240, Note_on_c, 0, 55, 80
+1, 359, Note_on_c, 0, 55, 0
+1, 360, Note_on_c, 0, 57, 80
+1, 479, Note_on_c, 0, 57, 0
+1, 480, Note_on_c, 0, 58, 80
+1, 599, Note_on_c, 0, 58, 0
+1, 600, Note_on_c, 0, 55, 80
+1, 719, Note_on_c, 0, 55, 0
+1, 720, Note_on_c, 0, 57, 80
+1, 839, Note_on_c, 0, 57, 0
+1, 840, Note_on_c, 0, 55, 80
+1, 959, Note_on_c, 0, 55, 0
+1, 960, Note_on_c, 0, 53, 80
+1, 1079, Note_on_c, 0, 53, 0
+1, 1080, Note_on_c, 0, 52, 80
+1, 1199, Note_on_c, 0, 52, 0
+1, 1200, Note_on_c, 0, 53, 80
+1, 1319, Note_on_c, 0, 53, 0
+1, 1320, Note_on_c, 0, 62, 80
+1, 1439, Note_on_c, 0, 62, 0
+1, 1440, Note_on_c, 0, 60, 80
+1, 1559, Note_on_c, 0, 60, 0
+1, 1560, Note_on_c, 0, 59, 80
+1, 1679, Note_on_c, 0, 59, 0
+1, 1680, Note_on_c, 0, 57, 80
+1, 1799, Note_on_c, 0, 57, 0
+1, 1800, Note_on_c, 0, 55, 80
+1, 1919, Note_on_c, 0, 55, 0
+1, 1920, Note_on_c, 0, 60, 80
+1, 2039, Note_on_c, 0, 60, 0
+1, 2040, Note_on_c, 0, 52, 80
+1, 2159, Note_on_c, 0, 52, 0
+1, 2160, Note_on_c, 0, 43, 80
+1, 2279, Note_on_c, 0, 43, 0
+1, 2280, Note_on_c, 0, 53, 80
+1, 2399, Note_on_c, 0, 53, 0
+1, 2400, Note_on_c, 0, 52, 80
+1, 2519, Note_on_c, 0, 52, 0
+1, 2520, Note_on_c, 0, 50, 80
+1, 2639, Note_on_c, 0, 50, 0
+1, 2640, Note_on_c, 0, 52, 80
+1, 2759, Note_on_c, 0, 52, 0
+1, 2760, Note_on_c, 0, 48, 80
+1, 2879, Note_on_c, 0, 48, 0
+1, 2880, End_track
+0, 0, End_of_file

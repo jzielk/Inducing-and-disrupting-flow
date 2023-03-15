@@ -1,0 +1,51 @@
+0, 0, Header, 1, 1, 480
+1, 0, Start_track
+1, 0, Title_t, "Trombone\000"
+1, 0, Time_signature, 4, 2, 24, 8
+1, 0, Key_signature, -2, "major"
+1, 0, Tempo, 476190
+1, 0, Control_c, 0, 121, 0
+1, 0, Program_c, 0, 57
+1, 0, Control_c, 0, 7, 100
+1, 0, Control_c, 0, 10, 64
+1, 0, Control_c, 0, 91, 0
+1, 0, Control_c, 0, 93, 0
+1, 0, MIDI_port, 0
+1, 0, Control_c, 1, 121, 0
+1, 0, Program_c, 1, 59
+1, 0, Control_c, 1, 7, 100
+1, 0, Control_c, 1, 10, 64
+1, 0, Control_c, 1, 91, 0
+1, 0, Control_c, 1, 93, 0
+1, 0, MIDI_port, 0
+1, 1920, Note_on_c, 0, 62, 112
+1, 1920, Control_c, 0, 2, 112
+1, 3239, Note_on_c, 0, 62, 0
+1, 3240, Note_on_c, 0, 57, 112
+1, 3359, Note_on_c, 0, 57, 0
+1, 3360, Note_on_c, 0, 54, 112
+1, 3519, Note_on_c, 0, 54, 0
+1, 3520, Note_on_c, 0, 50, 112
+1, 3679, Note_on_c, 0, 50, 0
+1, 3680, Note_on_c, 0, 54, 112
+1, 3839, Note_on_c, 0, 54, 0
+1, 3840, Note_on_c, 0, 57, 112
+1, 4559, Note_on_c, 0, 57, 0
+1, 4560, Note_on_c, 0, 57, 112
+1, 4799, Note_on_c, 0, 57, 0
+1, 4800, Note_on_c, 0, 60, 112
+1, 5519, Note_on_c, 0, 60, 0
+1, 5520, Note_on_c, 0, 58, 112
+1, 5759, Note_on_c, 0, 58, 0
+1, 5760, Note_on_c, 0, 57, 112
+1, 7079, Note_on_c, 0, 57, 0
+1, 7080, Note_on_c, 0, 54, 112
+1, 7199, Note_on_c, 0, 54, 0
+1, 7200, Note_on_c, 0, 50, 112
+1, 7359, Note_on_c, 0, 50, 0
+1, 7360, Note_on_c, 0, 45, 112
+1, 7519, Note_on_c, 0, 45, 0
+1, 7520, Note_on_c, 0, 42, 112
+1, 7679, Note_on_c, 0, 42, 0
+1, 7680, End_track
+0, 0, End_of_file

@@ -1,0 +1,63 @@
+0, 0, Header, 1, 1, 480
+1, 0, Start_track
+1, 0, Title_t, "Piano\000"
+1, 0, Time_signature, 4, 2, 24, 8
+1, 0, Key_signature, -1, "major"
+1, 0, Tempo, 545455
+1, 0, Control_c, 0, 121, 0
+1, 0, Program_c, 0, 0
+1, 0, Control_c, 0, 7, 100
+1, 0, Control_c, 0, 10, 64
+1, 0, Control_c, 0, 91, 0
+1, 0, Control_c, 0, 93, 0
+1, 0, MIDI_port, 0
+1, 0, Note_on_c, 0, 79, 80
+1, 455, Note_on_c, 0, 79, 0
+1, 480, Note_on_c, 0, 78, 80
+1, 707, Note_on_c, 0, 78, 0
+1, 720, Note_on_c, 0, 81, 80
+1, 1199, Note_on_c, 0, 81, 0
+1, 1200, Note_on_c, 0, 79, 80
+1, 1655, Note_on_c, 0, 79, 0
+1, 1680, Note_on_c, 0, 76, 80
+1, 1907, Note_on_c, 0, 76, 0
+1, 1920, Note_on_c, 0, 79, 80
+1, 2375, Note_on_c, 0, 79, 0
+1, 2400, Note_on_c, 0, 77, 80
+1, 2855, Note_on_c, 0, 77, 0
+1, 2880, Note_on_c, 0, 76, 80
+1, 3359, Note_on_c, 0, 76, 0
+1, 3360, Note_on_c, 0, 77, 80
+1, 3815, Note_on_c, 0, 77, 0
+1, 3840, Note_on_c, 0, 74, 80
+1, 4067, Note_on_c, 0, 74, 0
+1, 4080, Note_on_c, 0, 76, 80
+1, 4535, Note_on_c, 0, 76, 0
+1, 4560, Note_on_c, 0, 79, 80
+1, 5279, Note_on_c, 0, 79, 0
+1, 5280, Note_on_c, 0, 77, 80
+1, 5735, Note_on_c, 0, 77, 0
+1, 5760, Note_on_c, 0, 81, 80
+1, 7127, Note_on_c, 0, 81, 0
+1, 8640, Note_on_c, 0, 81, 80
+1, 8943, Note_on_c, 0, 81, 0
+1, 8960, Note_on_c, 0, 82, 85
+1, 9263, Note_on_c, 0, 82, 0
+1, 9280, Note_on_c, 0, 84, 90
+1, 9583, Note_on_c, 0, 84, 0
+1, 9600, Note_on_c, 0, 88, 96
+1, 10079, Note_on_c, 0, 88, 0
+1, 10080, Note_on_c, 0, 86, 96
+1, 10535, Note_on_c, 0, 86, 0
+1, 10560, Note_on_c, 0, 84, 96
+1, 11243, Note_on_c, 0, 84, 0
+1, 11280, Note_on_c, 0, 77, 96
+1, 11507, Note_on_c, 0, 77, 0
+1, 11520, Note_on_c, 0, 88, 96
+1, 11999, Note_on_c, 0, 88, 0
+1, 12000, Note_on_c, 0, 89, 96
+1, 12455, Note_on_c, 0, 89, 0
+1, 12480, Note_on_c, 0, 84, 96
+1, 13391, Note_on_c, 0, 84, 0
+1, 13392, End_track
+0, 0, End_of_file

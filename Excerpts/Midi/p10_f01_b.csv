@@ -1,0 +1,50 @@
+0, 0, Header, 1, 1, 480
+1, 0, Start_track
+1, 0, Title_t, "Voice\000"
+1, 0, Time_signature, 3, 2, 24, 8
+1, 0, Key_signature, -1, "major"
+1, 0, Tempo, 909091
+1, 0, Control_c, 0, 121, 0
+1, 0, Program_c, 0, 52
+1, 0, Control_c, 0, 7, 100
+1, 0, Control_c, 0, 10, 64
+1, 0, Control_c, 0, 91, 0
+1, 0, Control_c, 0, 93, 0
+1, 0, MIDI_port, 0
+1, 0, Note_on_c, 0, 70, 80
+1, 0, Control_c, 0, 2, 80
+1, 239, Note_on_c, 0, 70, 0
+1, 240, Note_on_c, 0, 70, 80
+1, 479, Note_on_c, 0, 70, 0
+1, 480, Note_on_c, 0, 69, 80
+1, 1199, Note_on_c, 0, 69, 0
+1, 1200, Note_on_c, 0, 70, 80
+1, 1439, Note_on_c, 0, 70, 0
+1, 1440, Note_on_c, 0, 72, 80
+1, 1679, Note_on_c, 0, 72, 0
+1, 1680, Note_on_c, 0, 69, 80
+1, 1919, Note_on_c, 0, 69, 0
+1, 1920, Note_on_c, 0, 65, 80
+1, 2639, Note_on_c, 0, 65, 0
+1, 2640, Note_on_c, 0, 69, 80
+1, 2879, Note_on_c, 0, 69, 0
+1, 2880, Note_on_c, 0, 72, 80
+1, 3119, Note_on_c, 0, 72, 0
+1, 3120, Note_on_c, 0, 72, 80
+1, 3839, Note_on_c, 0, 72, 0
+1, 4080, Note_on_c, 0, 69, 80
+1, 4319, Note_on_c, 0, 69, 0
+1, 4320, Note_on_c, 0, 70, 80
+1, 4559, Note_on_c, 0, 70, 0
+1, 4560, Note_on_c, 0, 70, 80
+1, 4799, Note_on_c, 0, 70, 0
+1, 4800, Note_on_c, 0, 70, 80
+1, 4832, Note_on_c, 0, 70, 0
+1, 4833, Note_on_c, 0, 72, 80
+1, 4865, Note_on_c, 0, 72, 0
+1, 4868, Note_on_c, 0, 74, 80
+1, 5518, Note_on_c, 0, 74, 0
+1, 5520, Note_on_c, 0, 70, 80
+1, 5759, Note_on_c, 0, 70, 0
+1, 5760, End_track
+0, 0, End_of_file
