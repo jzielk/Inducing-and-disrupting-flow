@@ -163,4 +163,4 @@ This directory contains the dataset files needed to run the flow associations an
 This directory contains the dataset files needed to run the score analysis in the paper (data stored under score-analysis/data) in additon to the R Markdown file (score_analysis_flow.Rmd) that can be run in RStudio to get the results and figure reported in the paper under Score analysis.<br>
 <br>
 ## plots<br>
-This directory additionally contains the figures from the paper, Figure 1 to Figure 5. In addition, the directory also contains the components of Figure 4 as separate files, Figure 4a to Figure 4e.<br>
+This directory contains the figures from the paper, Figure 1 to Figure 5. In addition, the directory also contains the components of Figure 4 as separate files, Figure 4a to Figure 4e.<br>
