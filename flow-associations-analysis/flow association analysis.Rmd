@@ -1,0 +1,335 @@
+---
+title: "Flow state analysis 3-1-23"
+author: "Julia Zielke"
+date: "3/1/2023"
+output: html_document
+---
+
+# Setup
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(tidyr)
+library(dplyr)
+library(readxl)
+library(stats)
+library(janitor)
+library(qualtRics)
+library(psych)
+library(lm.beta)
+```
+
+# Data prep
+
+Importing raw data:
+```{r, echo=TRUE}
+# Importing a Qualtrics-generated .csv file in a way that takes care of variable names/labels:
+data_raw <- as_tibble(
+  qualtRics::read_survey("flow-associations-analysis/data/Flow Data.csv"))
+                        
+    #25 participants, total, 20 have valid data
+
+```
+
+#Initial Processing of Qualtrics Data
+Throwing out testing IDs and removing unnecessary variables, removing invalid or incomplete participant data.
+
+```{r, echo=TRUE}
+data_processed <- data_raw |>
+ #removing unnecessary variables
+   select(-StartDate, -EndDate, -Progress, -`Duration (in seconds)`, -Finished, -RecordedDate, -ResponseId, -DistributionChannel, -UserLanguage, -ExternalReference) 
+#throw out testing ids; testing id = 1
+data_processed <- data_processed %>%
+  filter(Status != 1) %>%
+  #throw out incomplete or invalid responses (participants who did not submit a score or did not experience flow)
+  filter(data_valid != 0)
+#removes 5 participants
+
+data_processed <- data_processed |>
+ #removing unnecessary variables for analysis 
+  #consent - Q15 & Q13
+  #Distractor task responses - Q1, Q2, Q3)
+  #testing ids - Status
+   select(-Status, -Q15, -Q13, -Q1, -Q2, -Q3) 
+  
+```
+
+#Demographics
+Age
+```{r}
+mean_age <- mean(data_processed$Age)
+print(mean_age)
+
+sd_age <- sd(data_processed$Age)
+print(sd_age)
+```
+
+How long participants have been playing their instrument
+```{r}
+mean_played <- mean(data_processed$YearsPlayed)
+print(mean_played)
+
+sd_played <- sd(data_processed$YearsPlayed)
+print(sd_played)
+```
+
+#Scoring Flow Scale (FSS)
+
+```{r}
+data_processed <- data_processed %>%
+  rename(Flow_1 = `Flow Short Scale_1`,
+         Flow_2 = `Flow Short Scale_2`,
+         Flow_3 = `Flow Short Scale_3`,
+         Flow_4 = `Flow Short Scale_4`,
+         Flow_5 = `Flow Short Scale_5`,
+         Flow_6 = `Flow Short Scale_6`,
+         Flow_7 = `Flow Short Scale_7`,
+         Flow_8 = `Flow Short Scale_8`,
+         Flow_9 = `Flow Short Scale_9`,
+         Flow_10 = `Flow Short Scale_10`) %>%
+  #taking mean of FSS items for each participant (row)
+   mutate(flow = rowMeans(
+             subset(., select = c(Flow_1:Flow_10))))
+```
+
+#Calculating the Difference between Time estimate and Actual time (time distortion)
+```{r}
+data_processed <- data_processed %>%
+  #coercing variables to numeric for calculation
+  mutate(actual_time = as.numeric(actual_time)) %>%
+  mutate(time_estimate_sec = as.numeric(time_estimate_sec)) %>%
+  mutate(time_flow = as.numeric(time_flow)) %>%
+  #time distortion operationalized as the difference between time estimate and actual time
+  mutate(time_diff = as.numeric(time_estimate_sec) - as.numeric(actual_time))
+```
+
+#Summary of Variables Data Table
+```{r}
+#selecting variables to summarize
+data_table_1 <- data_processed[, c(31:33, 35:36)]
+
+#putting flow first for cosmetics
+data_table_1 <- data_table_1 %>%
+  relocate(flow, .before = time_estimate_sec)
+
+summary(data_table_1)
+
+#A proportion of the total performance time will be used to look at flow duration instead of a flat value since the reported flow time durations varied greatly (range: 5 seconds to 175 seconds, mean: 46.9 seconds).
+
+```
+
+#Proportion of time in flow
+```{r}
+data_processed <- data_processed %>%
+   mutate(time_flow_proportion = time_flow/actual_time)
+```
+
+Creating an easier to read table that summarizes variables
+```{r}
+library(table1)
+
+#adding proportion of time in flow to table dataframe
+data_table_1 <- data_table_1 %>%
+   mutate(time_flow_proportion = time_flow/actual_time)
+
+table1::label(data_table_1$flow) <- "FSS"
+table1::label(data_table_1$time_estimate_sec) <- "Time estimate (sec)"
+table1::label(data_table_1$actual_time) <- "Actual time (sec)"
+table1::label(data_table_1$time_diff) <- "Time difference (sec)"
+table1::label(data_table_1$time_flow) <- "Duration of time in flow (sec)"
+table1::label(data_table_1$time_flow_proportion) <- "Proportion of time in flow"
+table1::table1(~flow + time_estimate_sec + actual_time + time_diff + time_flow + time_flow_proportion, data = data_table_1)
+```
+
+#Analyses:
+
+Time distortion
+```{r}
+lm_1 = lm(time_diff~flow, data = data_processed) 
+summary(lm_1)
+
+#Result: no significant association between FSS score and time distortion, p = 0.6743
+
+cor.test(data_processed$time_diff, data_processed$flow)
+#correlation = -0.100
+
+ggplot(data_processed, aes(x = flow, y = time_diff)) + 
+  geom_point() +
+  stat_smooth(method = "lm", col = "red", se=FALSE) +
+  ggtitle("Time distortion and state flow") +
+  ylab("Time distortion") +
+  xlab("State flow (FSS)") +
+  theme_light()
+```
+proportion of time in flow (flow duration)
+```{r}
+lm_2 = lm(time_flow_proportion~flow, data = data_processed) 
+summary(lm_2)
+
+# Result: significant positive association between FSS score and flow duration, p = 0.009864
+
+cor.test(data_processed$time_flow_proportion, data_processed$flow)
+#correlation = 0.56
+
+ggplot(data_processed, aes(x = flow, y = time_flow_proportion)) + 
+  geom_point() +
+  stat_smooth(method = "lm", col = "red", se=FALSE) +
+  ggtitle("Flow duration and state flow") +
+  ylab("Flow duration") +
+  xlab("State flow (FSS)") +
+  theme_light()
+
+```
+
+#Calculating Cronbach's Alpha for FSS
+```{r}
+data_alpha <- data_processed[,c(1:10)]
+
+alpha(data_alpha)
+#cronbach's alpha = 0.87
+```
+
+Summary stats of FSS score
+```{r}
+#mean
+mean(data_processed$flow)
+
+#sd
+sd(data_processed$flow)
+
+# mean 4.74 (SD =  0.99)
+```
+
+
+
+#Flow subscales: Absorption 
+```{r}
+#selecting only the variables for the absorption subscale along with the dependent variables
+data_absorption <- data_processed[,c(1, 3, 6, 10, 34, 35, 36, 37)]
+
+#calculating absorption subscore
+data_absorption <- data_absorption %>%
+   mutate(flow = rowMeans(
+             subset(., select = c(Flow_1:Flow_10)))) 
+
+#Cronbach's alpha
+data_alpha_absorption <- data_absorption[,c(1:4)]
+
+alpha(data_alpha_absorption)
+
+# α = 0.56
+
+#mean
+mean(data_absorption$flow)
+
+#sd
+sd(data_absorption$flow)
+
+#subscore mean 4.3 (SD = 0.99) 
+```
+
+#Absorption analyses:
+
+Time distortion
+```{r}
+lm_3 = lm(time_diff~flow, data = data_absorption) 
+summary(lm_3)
+
+#Result: no significant association between absorption and time distortion, p = 0.8305
+
+cor.test(data_absorption$time_diff, data_absorption$flow)
+#correlation = 0.051
+
+ggplot(data_absorption, aes(x = flow, y = time_diff)) + 
+  geom_point() +
+  stat_smooth(method = "lm", col = "red", se=FALSE) +
+  ggtitle("Time distortion and absorption") +
+  ylab("Time distortion") +
+  xlab("Absorption (FSS)") +
+  theme_light()
+```
+
+Flow duration
+```{r}
+lm_4 = lm(time_flow_proportion~flow, data = data_absorption) 
+summary(lm_4)
+
+#Result: no significant association between absorption and flow duration, p = 0.1102
+
+cor.test(data_absorption$time_flow_proportion, data_absorption$flow)
+#correlation = 0.368
+
+ggplot(data_absorption, aes(x = flow, y = time_flow_proportion)) + 
+  geom_point() +
+  stat_smooth(method = "lm", col = "red", se=FALSE) +
+  ggtitle("Flow duration and absorption") +
+  ylab("Flow duration") +
+  xlab("Absorption (FSS)") +
+  theme_light()
+```
+
+#Flow subscales: Fluency
+```{r}
+#selecting only the variables for the fluency subscale along with the dependent variables
+data_fluency <- data_processed[,c(2, 4, 5, 7, 8, 9, 34, 35, 36, 37)]
+
+#calculating fluency subscore
+data_fluency <- data_fluency %>%
+   mutate(flow = rowMeans(
+             subset(., select = c(Flow_2:Flow_9)))) 
+
+#Cronbach's alpha
+data_alpha_fluency <- data_fluency[,c(1:6)]
+
+alpha(data_alpha_fluency)
+
+# α = 0.91
+
+#mean
+mean(data_fluency$flow)
+
+#sd
+sd(data_fluency$flow)
+
+#subscore mean 5.03 (SD = 1.20)
+```
+
+#Fluency analyses:
+```{r}
+lm_5 = lm(time_diff~flow, data = data_fluency) 
+summary(lm_5)
+
+#Result: no significant association between fluency and time distortion, p = 0.4857
+
+cor.test(data_fluency$time_diff, data_fluency$flow)
+#correlation = -0.165
+
+ggplot(data_fluency, aes(x = flow, y = time_diff)) + 
+  geom_point() +
+  stat_smooth(method = "lm", col = "red", se=FALSE) +
+  ggtitle("Time distortion and Fluency") +
+  ylab("Time distortion") +
+  xlab("Fluency (FSS)") +
+  theme_light()
+```
+
+Flow duration
+```{r}
+lm_6 = lm(time_flow_proportion ~ flow, data = data_fluency) 
+summary(lm_6)
+
+#Result: significant positive association between fluency and flow duration, p = 0.008775
+
+cor.test(data_fluency$time_flow_proportion, data_fluency$flow)
+#correlation = 0.569
+
+ggplot(data_fluency, aes(x = flow, y = time_flow_proportion)) + 
+  geom_point() +
+  stat_smooth(method = "lm", col = "red", se=FALSE) +
+  ggtitle("Flow duration and fluency") +
+  xlab("Fluency (FSS)") +
+  ylab("Flow duration")
+
+```
