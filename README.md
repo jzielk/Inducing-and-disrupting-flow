@@ -23,7 +23,7 @@ The process for coverting the .mid files to .csv is as follows:<br>
 <br>
 Requirements: <br>
 - Linux<br>
-- Python<br>
+- Python3<br>
 <br>
 Run within Command Prompt:<br>
 <br>
