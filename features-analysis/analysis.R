@@ -76,7 +76,7 @@ interval_distribution <- data %>%
   theme_classic() 
 
 # save
-ggsave(paste0(output_path, "Figure 5.tiff"), 
+ggsave(paste0(output_path, "Figure 6.tiff"), 
        interval_distribution, 
        height = 10, width = 18,
        units = "cm",
