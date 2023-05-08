@@ -1,5 +1,5 @@
 ---
-title: "Flow state analysis 3-1-23"
+title: "Flow state analysis"
 author: "Julia Zielke"
 date: "3/1/2023"
 output: html_document
@@ -19,6 +19,7 @@ library(janitor)
 library(qualtRics)
 library(psych)
 library(lm.beta)
+library(ggpubr)
 ```
 
 # Data prep
@@ -155,13 +156,14 @@ summary(lm_1)
 cor.test(data_processed$time_diff, data_processed$flow)
 #correlation = -0.100
 
-ggplot(data_processed, aes(x = flow, y = time_diff)) + 
+distortion <- ggplot(data_processed, aes(x = flow, y = time_diff)) + 
   geom_point() +
   stat_smooth(method = "lm", col = "red", se=FALSE) +
   ggtitle("Time distortion and state flow") +
-  ylab("Time distortion") +
+  ylab("Time distortion (sec)") +
   xlab("State flow (FSS)") +
-  theme_light()
+  theme_classic()
+distortion
 ```
 proportion of time in flow (flow duration)
 ```{r}
@@ -171,18 +173,34 @@ summary(lm_2)
 # Result: significant positive association between FSS score and flow duration, p = 0.009864
 
 cor.test(data_processed$time_flow_proportion, data_processed$flow)
-#correlation = 0.56
+#correlation = 0.562
 
-ggplot(data_processed, aes(x = flow, y = time_flow_proportion)) + 
+duration <- ggplot(data_processed, aes(x = flow, y = time_flow_proportion)) + 
   geom_point() +
-  stat_smooth(method = "lm", col = "red", se=FALSE) +
+  stat_smooth(method = "lm", col = "blue", se=FALSE) +
   ggtitle("Flow duration and state flow") +
-  ylab("Flow duration") +
+  ylab("Flow duration (proportion)") +
   xlab("State flow (FSS)") +
-  theme_light()
-
+  theme_classic()
+duration
 ```
+Saving Figure 4
+```{r}
+Figure_4 <- ggarrange(distortion, duration, 
+          labels = c("a)", "b)"),
+          ncol = 2, nrow = 1)
+Figure_4
 
+#output
+output_path = "plots/"
+
+# save
+ggsave(paste0(output_path, "Figure 4.tiff"), 
+       Figure_4, 
+       height = 10, width = 18,
+       units = "cm",
+       dpi=300)
+```
 #Calculating Cronbach's Alpha for FSS
 ```{r}
 data_alpha <- data_processed[,c(1:10)]
